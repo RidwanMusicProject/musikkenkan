@@ -17,24 +17,17 @@ def ken(func):
                 await app.get_chat_member(config.MUST_JOIN, message.from_user.id)
             except UserNotParticipant:
                 if config.MUST_JOIN.isalpha():
-                    link1 = "https://t.me/" + config.MUST_JOIN
+                    link = "https://t.me/" + config.MUST_JOIN
                 else:
                     chat_info = await app.get_chat(config.MUST_JOIN)
-                    chat_info.invite_link1
+                    chat_info.invite_link
                 await app.get_chat_member(config.MUST_JOIN, message.from_user.id)
-            except UserNotParticipant:
-                if config.MUST_JOIN.isalpha():
-                    link2 = "https://t.me/" + config.MUST_JOIN
-                else:
-                    chat_info = await app.get_chat(config.MUST_JOIN)
-                    chat_info.invite_link2
                 try:
                     await message.reply(
                         f"**Hay kak {rpk}, Silahkan join dulu biar bisa pake bot ini kak**",
                         disable_web_page_preview=True,
                         reply_markup=InlineKeyboardMarkup(
-                            [[InlineKeyboardButton("••ꜱɪʟᴀʜᴋᴀɴ ᴊᴏɪɴ••", url=link1)]]
-                            [[InlineKeyboardButton("••ꜱɪʟᴀʜᴋᴀɴ ᴊᴏɪɴ••", url=link2)]]
+                            [[InlineKeyboardButton("••ꜱɪʟᴀʜᴋᴀɴ ᴊᴏɪɴ••", url=link)]]
                         ),
                     )
                     await message.stop_propagation()
